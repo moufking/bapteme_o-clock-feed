@@ -93,7 +93,7 @@ Par contre en étant utilisateur, je peux voir la liste des professeurs, certes 
 
 NB: Il faudrait revoir là où la verification des permissions à été ajouter et le vérifier uniquement sur les actions `modifier` , `supprimer` et `ajouter` d'un professeur
 
-- À part cela, l'ajout, la modification et la suppression d'un étudiant et d'un professeur fonctionnent bien."
+- À part cela, l'ajout la modification et la suppression d'un étudiant et d'un professeur fonctionnent bien."
 
 
 
