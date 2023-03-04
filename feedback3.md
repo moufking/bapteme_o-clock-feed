@@ -1,6 +1,6 @@
 # feedback:
 
-> En générale le mode mvc a été respecté (Model, Vue et controller)
+> En générale le modèle mvc a été respecté (Model, Vue et controller)
 
 
 ### #0 Le projet ne demarre par correctement 

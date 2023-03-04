@@ -1,6 +1,6 @@
 # feedback:
 
-> En générale le mode mvc a été respecté (Model, Vue et controller)
+> En générale le modèle mvc a été respecté (Model, Vue et controller)
 
 
 ### #0 Le projet ne demarre par correctement
@@ -112,5 +112,15 @@ il faudrait faire ceci :
         } 
  ```
 
+###  TP non terminé
+- Il faudrait faire une connexion afin de récupérer les informations de l'utilisateur dans une session afin de voir si en
+  fonction de son role(admin user)  l'utilisateur à droit de voir les menus.
+
+- Le travail n'est pas totalement fini car il manque diverses fonctionnalités notamment :
+    - La connexion
+    - L'ajout, la suppression et la modification d'un professeur et d'un étudiant.
+    - La déconnexion
+    - L'ajout, la modification et la suppression d'un professeur, d'un étudiant 
+    
 NB: Il faudrait faire pareil pour la fonction affichant la liste des professeurs.
 
