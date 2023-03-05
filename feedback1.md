@@ -8,6 +8,9 @@
 - Les routes ne marche pas car dans le dossier public il manque le `.htaccess` qui doit contenir la bonne redirection.
   Voici le contenu du fichier `.htaccess`
 
+- Le fichier `.htaccess` est un fichier de configuration utilisé par les serveurs web Apache pour permettre la personnalisation
+  des paramètres de configuration pour un répertoire particulier ou un ensemble de répertoires
+
 ```
 RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
 RewriteRule ^(.*) - [E=BASE_URI:%1]
@@ -20,7 +23,7 @@ RewriteRule ^(.*)$ index.php?page=$1 [QSA,L]
 ```
 
 ### #1 Mettre en place les permissions:
-- Concernant le code permettant de verifier si l'utilisateurs est présent dans la base de donner , je note qu'on pourrai faire une seul requete
+- Concernant le code permettant de verifier si l'utilisateur est présent dans la base de donner , je note qu'on pourrai faire une seul requete
   afin de voir si l'utilisateur est présent dans la base de donnée:
   En effet voici le code  :
   
@@ -46,14 +49,14 @@ if($user) {
             }
 ?>
 ```
-On peut faire une seule  requete qui va vérifier si dans la base de donner il existe un utilisateur ayant le mail  et le mot de
+On peut faire une seule requete qui va vérifier si dans la base de donner il existe un utilisateur ayant le mail et le mot de
 passe entrer par l'utilisateur.
 
 ```
 $pdoStatement = $pdo->prepare('SELECT * FROM app_user WHERE email = :email AND  password = :password');
 ```
 
-- Concernant la fonction la requete affichant la liste des étudiants, vous avez mis ce bout de code 
+- Concernant la fonction qui affiche la liste des étudiants, vous avez mis ce bout de code 
 ```
   public function student()
   {
@@ -77,7 +80,7 @@ On peut faire ceci
     }
 ```
 
-Pareil pour la fonction affichant la liste des professeurs 
+C'est pareil pour la fonction affichant la liste des professeurs  , on peut faire ceci :
 ```
  public function list()
     {
@@ -91,9 +94,9 @@ Pareil pour la fonction affichant la liste des professeurs
 
 Par contre en étant utilisateur, je peux voir la liste des professeurs, certes je peux pas `modifier` , `supprimer` et `ajouter`
 
-NB: Il faudrait revoir là où la verification des permissions à été ajouter et le vérifier uniquement sur les actions `modifier` , `supprimer` et `ajouter` d'un professeur
+NB: Il faudrait revoir là où la vérification des permissions à été ajouter et le vérifier uniquement sur les actions `modifier` , `supprimer` et `ajouter` d'un professeur
 
-- À part cela, l'ajout, la modification et la suppression d'un étudiant et d'un professeur fonctionnent bien."
+-À part cela, l'ajout, la modification et la suppression d'un étudiant et d'un professeur fonctionnent bien. "
 
 
 

@@ -6,8 +6,10 @@
 ### #0 Le projet ne demarre par correctement 
 - Dans le dossier public, il manque le fichier `.htaccess`
     
-    -  le fichier `.htaccess` permet de pointer vers le bon fichier principale du projet .Il faudrait créer un fichier .htaccess 
-    et copier ce code 
+    
+       
+- Le fichier `.htaccess` est un fichier de configuration utilisé par les serveurs web Apache pour permettre la personnalisation 
+      des paramètres de configuration pour un répertoire particulier ou un ensemble de répertoires
        
 ```
 RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
@@ -23,16 +25,20 @@ RewriteRule ^(.*)$ index.php?page=$1 [QSA,L]
 
 ### #1 Mettre en place les permissions:
 
-- Dans la liste des menus, aucune vérification n'est effectuée pour afficher uniquement 
-  le menu de connexion si l'utilisateur n'est pas encore connecté, et les autres menus si l'utilisateur est connecté.
+- Aucune vérification n'est effectuée dans la liste des menus pour afficher uniquement le menu de connexion si l'utilisateur 
+  n'est pas encore connecté, et afficher les autres menus si l'utilisateur est connecté.
+  
+Donc il faudrait faire une page de connexion, et récupérer le mail et le mot de passe , ensuite faire une requete comme ceci : 
   
 Ex
 ```
 $pdoStatement = $pdo->prepare('SELECT * FROM app_user WHERE email = :email AND  password = :password');
 ```
 
+Cette requête permettra de vérifier si un utilisateur correspondant aux informations entrées par l'utilisateur existe dans la base de données."
+
 ### #2 La page principale (`/`) ne marche pas 
-- Dans la page d'accueil du site qui  (`/home`) et non (`/`) au niveau des routes vous avez ajouter ceci
+- Dans la page d'accueil du site qui  (`/home`) et non (`/`) au niveau des routes vous avez ajouté ceci
 
 ```
 $router->map(
@@ -58,10 +64,14 @@ $router->map(
     ],
     'main-home'
 );
+
 ```
 
+Avec ce bout de code on spécifie qu'au démarrage du site on pouvoir exécuter la fonction home qui est dans le fichier MainController .
+Cette fonction permet d'affiche la page d'accueil du site.
+
 ### #3 Erreur concernant l'affichage des routes 
-- Dans le fichier `home.tpl.php` il y'a une erreur concernant les liens 'Utilisateurs', 'Se deconnecter' et 'accueil'
+- Dans le fichier `home.tpl.php` , il y'a une erreur concernant les liens 'Utilisateurs', 'Se deconnecter' et 'accueil'
     
   -  Voici votre code 
     ```
@@ -75,7 +85,7 @@ $router->map(
                         <a class="nav-link" href="/logout">Se déconnecter</a>
                     </li>
     ```
-  Le code ci-dessus ne marche pas il faudrait mettre le nom exact de la route 
+  Le code ci-dessus ne marche pas il faudrait mettre le nom exact de la route qui avait été renseigner dans le fichier de routes(index.php)
 Voici un exemple : 
    ```
                     <li class="nav-item">
@@ -90,8 +100,8 @@ Voici un exemple :
     ```
   
 ### #4 TP non terminé 
-   - Il faudrait faire une connexion afin de récupérer les informations de l'utilisateur dans une session afin de voir si en
-      fonction de son role(admin user)  l'utilisateur à droit de voir les menus.
+   - - Il faudrait établir une connexion afin de récupérer les informations de l'utilisateur dans une session,
+       pour déterminer si l'utilisateur a le droit de voir certains menus en fonction de son rôle (administrateur ou utilisateur).
 
  - Le travail n'est pas totalement fini car il manque diverses fonctionnalités notamment :
    - La connexion
@@ -105,7 +115,7 @@ Voici un exemple :
    par exemple.
    
     -  iL faudrait créer un fichier `nav.tpl.php` et y mettre le code du menu 
-    Ex :
+     Dans le fichier  `nav.tpl.php`, vous pouvez mettre ce bout de code
        ```
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -121,7 +131,8 @@ Voici un exemple :
                 </ul>
             </div>
        ```
-       Ensuite l'importer dans tout les autres fichiers si vous en avez besoin 
+       Ensuite l'importer dans tout les autres fichiers si vous en avez besoin (Home.tpl.php, user_list.tpl.php, etc...)
+    
     Ex : Si vous voulez l'inclure dans le fichier permettant d'afficher la liste des utilisateurs, il faudrait dans le fichier `strudent_list.tpl.php`
        ajouter ce bout de code 
        
@@ -131,9 +142,10 @@ Voici un exemple :
        <!--code suivant -->
        ```
        
-- Il y'a une erreur lors de vérification des champs:
+- Il y'a une erreur lors de vérification des champs du formulaire pour enregistrer un étudiant:
   
    - Les vérifications pour voir si les champs (firstName, lastName, status, job) sont vide ou pas ne sont pas exact.
+     
         Au lieu de faire ceci :
         ```
       // tests sur les filtres
@@ -167,11 +179,13 @@ il faudrait faire ceci :
         
  ```
 
-     
-     
-       
-       
- 
-       
+La fonction filter_input() est une fonction PHP qui permet de valider et de filtrer les données d'entrée envoyées à un script PHP par les méthodes GET, POST ou COOKIE. La valeur de retour de cette fonction dépend du type de filtre utilisé et du succès de la validation.
+
+Si la validation réussit, la fonction filter_input() renvoie la valeur filtrée. Si la validation échoue, elle renvoie false. Si la variable d'entrée n'est pas définie, elle renvoie null.
 
 
+- Le travail n'est pas totalement fini car il manque diverses fonctionnalités, notamment :
+    - La connexion
+    - L'ajout, la suppression et la modification d'un professeur et d'un étudiant.
+    - La déconnexion
+    - La verification des droits avant de rendre disponible une action 

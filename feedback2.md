@@ -9,9 +9,10 @@
 - Au niveau de fichier `header.php` il y'a un problème concernant le bouton 'Se déconnecter'
   
    - La route de déconnexion n'existe pas, car elle n'est pas créer dans le fichier `ìndex.php`: Il faudrait créer cette route 
-  afin que cela puisse fonctionner .
+  afin que cela puisse fonctionner.
      
-   - Il y'a une erreur concernant la route affichant la liste des utilisateurs 
+   - Il y'a une erreur concernant la route affichant la liste des utilisateurs.
+  Voici votre code : 
   ```
                     <li class="nav-item">
                         <a class="nav-link" href="./appuser/list.html">Utilisateurs</a>
@@ -32,8 +33,8 @@ Il faudrait appeler la route avec son nom
 ````
 
      
-   - Il faudrait faire une connexion afin de récupérer les informations de l'utilisateur dans une session afin de voir si en 
-  fonction de son role(admin user) ,l'utilisateur a droit de voir les menus.
+   - Il faudrait établir une connexion afin de récupérer 
+     les informations de l'utilisateur dans une session, pour déterminer si l'utilisateur a le droit de voir certains menus en fonction de son rôle (administrateur ou utilisateur).
      
 - Le travail n'est pas totalement fini car il manque diverses fonctionnalités, notamment : 
   - La connexion 
