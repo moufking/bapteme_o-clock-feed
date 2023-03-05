@@ -5,7 +5,7 @@
 
 ### #0 Les routes ne fonctionne pas 
 
-- Les routes ne marche fonction car dans le dossier public il manque le `.htaccess` qui doit contenir la bonne redirection.
+- Les routes ne marche pas car dans le dossier public il manque le `.htaccess` qui doit contenir la bonne redirection.
   Voici le contenu du fichier `.htaccess`
 
 ```
